@@ -515,68 +515,9 @@ export default function Home() {
                         <div className="text-sm text-accent">{testimonial.company}</div>
                       </div>
                     </div>
-                  </div>
+                  </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Hero Section Copy (replacing CTA) */}
-        <section className="relative w-full h-[100vh] md:h-[130vh] overflow-hidden">
-          {/* Image Slider */}
-          <div className="absolute inset-0">
-            {heroSlides.map((slide, index) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentSlide ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                <Image
-                  src={slide.src}
-                  alt={slide.alt}
-                  fill
-                  className="object-cover"
-                  priority={index === 0}
-                />
-              </div>
-            ))}
-          </div>
-          
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
-          
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-all duration-300 group"
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
-          </button>
-          
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-all duration-300 group"
-            aria-label="Next slide"
-          >
-            <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
-          </button>
-
-          {/* Content Overlay */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-primary-foreground px-4">
-            <div className="max-w-4xl mx-auto space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6">
-                <Sparkles className="w-4 h-4" />
-                Professional Printing Solutions
-              </div>
-              <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none text-white drop-shadow-2xl">
-                Elevate Your <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Printing Experience</span>
-              </h1>
-              <p className="mt-6 max-w-[700px] mx-auto text-lg md:text-xl text-white/90 leading-relaxed">
-                Discover our latest range of high-performance printers designed for efficiency, quality, and reliability in professional environments.
-              </p>
             </div>
           </div>
         </section>
