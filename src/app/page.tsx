@@ -16,6 +16,8 @@ import {
   CheckCircle,
   ArrowRight,
   Sparkles,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -33,6 +35,7 @@ export default function Home() {
     name: string
   } | null>(null)
   const bookingRef = useRef<HTMLDivElement>(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const handleSelectPrinter = (printerName: string) => {
     setSelectedPrinter({ name: printerName })
@@ -46,6 +49,42 @@ export default function Home() {
       })
     }
   }, [selectedPrinter])
+
+  // Hero slider images
+  const heroSlides = [
+    {
+      src: '/6710-c_1 copy.jpg',
+      alt: 'Brother MFC-L6710DW Professional Printer',
+    },
+    {
+      src: '/6910-c_1.jpg',
+      alt: 'Brother MFC-L6910DN Professional Printer',
+    },
+    {
+      src: '/6710-a.jpg',
+      alt: 'Brother MFC-L6710DW Features',
+    },
+    {
+      src: '/6910-a.jpg',
+      alt: 'Brother MFC-L6910DN Features',
+    },
+  ]
+
+  // Auto-rotate slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [heroSlides.length])
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length)
+  }
 
   const printers = [
     {
@@ -153,18 +192,65 @@ export default function Home() {
       </header>
 
       <main className="flex-1">
-        {/* Enhanced Hero Section */}
+        {/* Enhanced Hero Section with Slider */}
         <section id="home" className="relative w-full h-[100vh] md:h-[130vh] overflow-hidden">
+          {/* Image Slider */}
           <div className="absolute inset-0">
-            <Image
-              src="https://placehold.co/1920x1080/1a1a1a/ffffff?text=Modern+Office+Printing"
-              alt="Modern office with professional printing equipment"
-              fill
-              className="object-cover"
-              priority
-            />
+            {heroSlides.map((slide, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  index === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
           </div>
+          
+          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+          
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-all duration-300 group"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          </button>
+          
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-all duration-300 group"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          </button>
+
+          {/* Slide Indicators */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+            {heroSlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? 'bg-white scale-125'
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Content Overlay */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-primary-foreground px-4">
             <div className="max-w-4xl mx-auto space-y-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6">
@@ -482,7 +568,7 @@ export default function Home() {
       </main>
 
       {/* Enhanced Footer */}
-      <footer className="flex flex-col gap-6 sm:flex-row py-8 w-full shrink-0 items-center px-4 md:px-6 border-t border-border/40 bg-gradient-to-r from-gray-50 to-slate-100 dark:from-gray-900 dark:to-slate-900">
+      <footer className="flex flex-col gap-6 sm:flex-row py-8 w-full shrink-0 items-center px-4 md:px-6 border-b border-border/40 bg-gradient-to-r from-gray-50 to-slate-100 dark:from-gray-900 dark:to-slate-900">
         <div className="flex items-center gap-2">
           <div className="p-2 rounded-lg bg-gradient-to-br from-orange-400 to-red-500 shadow-lg">
             <Printer className="h-5 w-5 text-white" />
