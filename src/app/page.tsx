@@ -157,7 +157,7 @@ export default function Home() {
         <section id="home" className="relative w-full h-[100vh] md:h-[130vh] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg"
+              src="https://placehold.co/1920x1080/1a1a1a/ffffff?text=Modern+Office+Printing"
               alt="Modern office with professional printing equipment"
               fill
               className="object-cover"
@@ -452,20 +452,29 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Enhanced CTA Section */}
-        <section id="contact-cta" className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/20"></div>
-          <div className="container px-4 md:px-6 text-center relative z-10">
-            <div className="max-w-3xl mx-auto space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-6">
+        {/* Hero Section Copy (replacing CTA) */}
+        <section className="relative w-full h-[100vh] md:h-[130vh] overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="https://placehold.co/1920x1080/1a1a1a/ffffff?text=Modern+Office+Printing"
+              alt="Modern office with professional printing equipment"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+          <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-primary-foreground px-4">
+            <div className="max-w-4xl mx-auto space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6">
                 <Sparkles className="w-4 h-4" />
-                Ready to Get Started?
+                Professional Printing Solutions
               </div>
-              <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl text-white drop-shadow-lg">
-                Transform Your Business with Professional Printing
-              </h2>
-              <p className="max-w-[600px] mx-auto text-white/90 md:text-xl leading-relaxed">
-                Join thousands of satisfied customers who have elevated their productivity with our cutting-edge printing solutions. Experience the difference today.
+              <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none text-white drop-shadow-2xl">
+                Elevate Your <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">Printing Experience</span>
+              </h1>
+              <p className="mt-6 max-w-[700px] mx-auto text-lg md:text-xl text-white/90 leading-relaxed">
+                Discover our latest range of high-performance printers designed for efficiency, quality, and reliability in professional environments.
               </p>
             </div>
           </div>
