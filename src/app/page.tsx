@@ -141,20 +141,6 @@ export default function Home() {
         </Link>
         <nav className="ml-auto flex gap-6 items-center">
           <Link
-            href="#printers"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-          >
-            Products
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-            href="#features"
-            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
-          >
-            Features
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
             href="/support"
             target="_blank"
             rel="noopener noreferrer"
@@ -163,21 +149,21 @@ export default function Home() {
             Support
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
           </Link>
-          <Button className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-lg hover:shadow-xl transition-all duration-300">
-            Get Quote
-          </Button>
         </nav>
       </header>
 
       <main className="flex-1">
         {/* Enhanced Hero Section */}
         <section id="home" className="relative w-full h-[100vh] md:h-[130vh] overflow-hidden">
-          <iframe
-            src="https://player.vimeo.com/video/1095441378?h=47c3ea0dfa&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1&background=1"
-            className="absolute top-1/2 left-1/2 w-[178vh] min-w-full h-[80vw] min-h-full -translate-x-1/2 -translate-y-1/2"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-          ></iframe>
+          <div className="absolute inset-0">
+            <Image
+              src="https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg"
+              alt="Modern office with professional printing equipment"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-primary-foreground px-4">
             <div className="max-w-4xl mx-auto space-y-8">
@@ -191,24 +177,6 @@ export default function Home() {
               <p className="mt-6 max-w-[700px] mx-auto text-lg md:text-xl text-white/90 leading-relaxed">
                 Discover our latest range of high-performance printers designed for efficiency, quality, and reliability in professional environments.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105"
-                  onClick={() => document.getElementById('printers')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Explore Products
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
-                  onClick={() => handleSelectPrinter(printers[0].name)}
-                >
-                  Book Demo
-                </Button>
-              </div>
             </div>
           </div>
         </section>
@@ -499,23 +467,6 @@ export default function Home() {
               <p className="max-w-[600px] mx-auto text-white/90 md:text-xl leading-relaxed">
                 Join thousands of satisfied customers who have elevated their productivity with our cutting-edge printing solutions. Experience the difference today.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <Button 
-                  size="lg" 
-                  className="bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 font-bold"
-                  onClick={() => handleSelectPrinter(printers[0].name)}
-                >
-                  Book Your Demo Now
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
-                >
-                  Get Custom Quote
-                </Button>
-              </div>
             </div>
           </div>
         </section>
